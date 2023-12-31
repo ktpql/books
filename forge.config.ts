@@ -9,6 +9,9 @@ import { WebpackPlugin } from '@electron-forge/plugin-webpack';
 import { mainConfig } from './webpack.main.config';
 import { rendererConfig } from './webpack.renderer.config';
 
+const { FusesPlugin } = require('@electron-forge/plugin-fuses');
+const { FuseV1Options, FuseVersion } = require('@electron/fuses');
+
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
@@ -32,6 +35,13 @@ const config: ForgeConfig = {
           },
         ],
       },
+    }),
+    new FusesPlugin({
+      version: FuseVersion.V1,
+      [FuseV1Options.RunAsNode]: false,
+      [FuseV1Options.EnableCookieEncryption]: true,
+      [FuseV1Options.EnableNodeOptionsEnvironmentVariable]: true,
+      [FuseV1Options.EnableNodeCliInspectArguments]: true,
     }),
   ],
 };
