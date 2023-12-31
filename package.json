@@ -1,6 +1,6 @@
 {
   "name": "ktpql-books",
-  "productName": "Ktpql Books",
+  "productName": "ktpql-books",
   "version": "0.1.0",
   "description": "Integrated Book Reading Environment",
   "main": ".webpack/main",
@@ -27,6 +27,7 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
     "@electron-forge/plugin-fuses": "^7.2.0",
     "@electron-forge/plugin-webpack": "^7.2.0",
+    "@electron-forge/publisher-github": "^7.2.0",
     "@electron/fuses": "^1.7.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
@@ -48,6 +49,7 @@
     "wdio-electron-service": "^6.0.2"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "update-electron-app": "^3.0.0"
   }
 }
