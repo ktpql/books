@@ -12,6 +12,10 @@
     "lint": "eslint --ext .ts,.tsx .",
     "test": "wdio run ./wdio.conf.ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ktpql/books"
+  },
   "keywords": [],
   "author": {
     "name": "Mustafa Katipoğlu",
