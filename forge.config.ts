@@ -44,6 +44,20 @@ const config: ForgeConfig = {
       [FuseV1Options.EnableNodeCliInspectArguments]: true,
     }),
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      platforms: ['darwin', 'linux', 'win32'],
+      config: {
+        repository: {
+          owner: 'ktpql',
+          name: 'books'
+        },
+        prerelease: true
+      }
+    }
+  ],
+
 };
 
 export default config;
