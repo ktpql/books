@@ -33,4 +33,4 @@ jobs:
         uses: stateful/vscode-server-action@v1
         if: failure()
         with:
-          timeout: '120000'
+          timeout-minutes: 5
