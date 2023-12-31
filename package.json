@@ -1,8 +1,8 @@
 {
   "name": "ktpql-books",
-  "productName": "ktpql-books",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "productName": "Ktpql Books",
+  "version": "0.1.0",
+  "description": "Integrated Book Reading Environment",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
