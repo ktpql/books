@@ -58,8 +58,7 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('open-file-request', (event) => {
-    console.log('open file request received');
+ipcMain.handle('open-file-request', (event) => {
     const callingWindow = BrowserWindow.fromWebContents(event.sender);
 
     const files = dialog.showOpenDialogSync(callingWindow, {
@@ -77,6 +76,11 @@ ipcMain.on('open-file-request', (event) => {
     let file1 = files[0];
 
     return file1;
+});
+
+ipcMain.handle('read-pdf-as-html', (event, filePath) => {
+  console.log("read-pdf-as-html" + filePath);
+  return "Test PDF Content";
 });
 
 // In this file you can include the rest of your app's specific main process

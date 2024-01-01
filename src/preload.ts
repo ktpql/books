@@ -1,6 +1,24 @@
-import { ipcRenderer } from "electron";
+import { contextBridge, ipcRenderer } from "electron";
+
+let filePath:string = null;
 
 ipcRenderer.on('open-file', (event)=>
 {
-    ipcRenderer.send('open-file-request');
+    ipcRenderer.invoke('open-file-request').then((result)=>{
+        filePath = result;
+    });
+});
+
+contextBridge.exposeInMainWorld("BackendServices", {
+    PdfDocument: {
+        async get() 
+        {   
+            if(filePath)
+            {
+                const html = await ipcRenderer.invoke('read-pdf-as-html', filePath);
+
+                return html as string;
+            }
+        }
+    }
 });
