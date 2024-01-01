@@ -2,7 +2,7 @@ name: Release App
 on:
   workflow_dispatch:
 jobs:
-  build:
+  release:
     strategy:
       matrix:
         os:
