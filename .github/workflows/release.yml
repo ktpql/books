@@ -11,6 +11,7 @@ jobs:
             { name: 'windows', image: 'windows-latest' },
           ]
     runs-on: ${{ matrix.os.image }}
+    timeout-minutes: 10 # Set your desired timeout value
     steps:
       - name: Github checkout
         uses: actions/checkout@v4
