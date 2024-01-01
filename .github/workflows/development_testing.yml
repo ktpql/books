@@ -9,7 +9,28 @@ on:
       - development
 
 jobs:
-  build:
+  unit_tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [20.x]
+        
+    steps:
+      - name: Github checkout
+        uses: actions/checkout@v4
+        with:
+            ref: 'development'
+      - name: 💚 Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: 🧱 Install Dependencies
+        run: npm ci
+      - name: 🧪 Run Tests
+        run: npm run utest
+  integration_tests:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -17,7 +38,10 @@ jobs:
         node-version: [20.x]
         
     steps:
-      - uses: actions/checkout@v4
+      - name: Github checkout
+        uses: actions/checkout@v4
+        with:
+            ref: 'development'
       - name: 💚 Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -31,7 +55,7 @@ jobs:
         uses: coactions/setup-xvfb@v1
         with:
           run: npm test
-          timeout-minutes: 10
+          options: '--timeout=5'
       - name: 🐛 Debug Build
         uses: stateful/vscode-server-action@v1
         if: failure()

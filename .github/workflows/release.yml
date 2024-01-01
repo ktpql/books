@@ -2,7 +2,7 @@ name: Release App
 on:
   workflow_dispatch:
 jobs:
-  build:
+  release:
     strategy:
       matrix:
         os:
@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Github checkout
         uses: actions/checkout@v4
+        with:
+            ref: 'master'
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
