@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from 'electron';
+import {createApplicationMenu} from './ApplicationMenu';
 const { updateElectronApp } = require('update-electron-app');
 
 updateElectronApp();
@@ -29,6 +30,10 @@ const createWindow = (): void => {
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
+
+  mainWindow.once('ready-to-show', () => {
+    createApplicationMenu();
+  });
 };
 
 // This method will be called when Electron has finished

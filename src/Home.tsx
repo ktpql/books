@@ -5,7 +5,8 @@ const Home = ()=> {
         <div>
             <section className='reading-scene'>
                 <div className='reading-scene-left'></div>
-                <div className='reading-scene-center'></div>
+                <div className='reading-scene-center'>
+                </div>
                 <div className='reading-scene-right'></div>
             </section>
         </div>
