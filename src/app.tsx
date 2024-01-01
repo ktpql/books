@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+import Home from './Home';
 
 const root = createRoot(document.getElementById('root'));
-root.render(<h2>Hello World from React!</h2>);
+root.render(<Home />);

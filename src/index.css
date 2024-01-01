@@ -1,7 +1,28 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.reading-scene {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* 100% of the viewport height */
+}
+
+.reading-scene-left,
+.reading-scene-right,
+.reading-scene-center {
+  min-height: 100%;
+  width: 100%;
+}
+
+.reading-scene-left,
+.reading-scene-right {
+  flex: 20%;
+  background-color: #000;
+}
+
+.reading-scene-center {
+  flex: 60%;
+  background-color: #f0f0f0;
 }
