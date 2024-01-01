@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 import {createApplicationMenu} from './ApplicationMenu';
 const { updateElectronApp } = require('update-electron-app');
 
@@ -56,6 +56,27 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+ipcMain.on('open-file-request', (event) => {
+    console.log('open file request received');
+    const callingWindow = BrowserWindow.fromWebContents(event.sender);
+
+    const files = dialog.showOpenDialogSync(callingWindow, {
+        properties: ['openFile'],
+        filters: [
+            { name: 'PDF Files', extensions: ['pdf'] },
+        ]
+    });
+
+    if(!files)
+    {
+        return null;
+    }
+
+    let file1 = files[0];
+
+    return file1;
 });
 
 // In this file you can include the rest of your app's specific main process
