@@ -31,7 +31,7 @@ jobs:
       - name: 🧪 Run Tests
         uses: coactions/setup-xvfb@v1
         with:
-          run: npm utest
+          run: npm run utest
           options: '--timeout=5'
   integration_tests:
     runs-on: ${{ matrix.os }}
