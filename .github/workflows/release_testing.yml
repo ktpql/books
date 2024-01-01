@@ -1,10 +1,12 @@
-name: CI
+name: Release Testing
 
 on:
   push:
     branches:
       - master
   pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -29,8 +31,10 @@ jobs:
         uses: coactions/setup-xvfb@v1
         with:
           run: npm test
+          timeout-minutes: 10
       - name: 🐛 Debug Build
         uses: stateful/vscode-server-action@v1
         if: failure()
         with:
-          timeout-minutes: 5
+          timeout: '12000'
+
